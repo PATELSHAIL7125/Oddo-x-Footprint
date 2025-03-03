@@ -2,19 +2,24 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(), // ✅ Tailwind CSS plugin added
+    tailwindcss(), 
   ],
   server: {
     proxy: {
-      "/api": {
+      "/api/spoonacular": {  // Proxy for Spoonacular API
         target: "https://api.spoonacular.com",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/api\/spoonacular/, ""), 
       },
-    },
-  },
+      "/api/local": {  // Proxy for Local API (Backend)
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api\/local/, ""), 
+      }
+    }
+  }
 });
