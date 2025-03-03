@@ -1,0 +1,115 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from React Router
+import { Menu, X, UtensilsCrossed } from "lucide-react";
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex justify-between items-center h-16">
+          {/* Left Section: Logo & Navbar Items */}
+          <div className="flex items-center space-x-60">
+            {/* Logo */}
+            <div className="flex items-center">
+              <UtensilsCrossed className="h-8 w-8 text-green-600" />
+              <span className="ml-2 text-xl font-bold text-gray-800">
+                NutriPlane
+              </span>
+            </div>
+
+            {/* Desktop Navigation - Adjusted spacing */}
+            <div className="hidden md:flex items-center space-x-15">
+              <Link
+                to="/"
+                className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
+              >
+                Home
+              </Link>
+              <Link
+                to="/meal-plans"
+                className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
+              >
+                Meal Plans
+              </Link>
+              <Link
+                to="/recipes"
+                className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
+              >
+                Recipes
+              </Link>
+              <Link
+                to="/about"
+                className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
+              >
+                About
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Section: Get Started Button */}
+          <Link
+            to="/get-started"
+            className="get-started-btn bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition-colors duration-200 text-lg">
+            Get Started
+          </Link>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+            <Link
+              to="/"
+              className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
+            >
+              Home
+            </Link>
+            <Link
+              to="/meal-plans"
+              className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
+            >
+              Meal Plans
+            </Link>
+            <Link
+              to="/recipes"
+              className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
+            >
+              Recipes
+            </Link>
+            <Link
+              to="/about"
+              className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
+            >
+              About
+            </Link>
+            <Link
+              to="/get-started"
+              className="bg-green-600 text-black px-8 py-3 rounded-md hover:bg-green-700 transition-colors duration-200 text-lg"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;

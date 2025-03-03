@@ -1,23 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Detail from "./pages/Detail";
 import Aihelper from './pages/aihelper';
 import MealPlanner from './pages/MealPlanner';
+import Navbar from './pages/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
 
 function App() {
   return (
     <Router>
-     
+     <div className="min-h-screen flex flex-col">
+     <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/detail" element={<Detail />} />
           <Route path="/aihelper" element={<Aihelper />} />
           <Route path="/mealplanner" element={<MealPlanner />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
         </Routes>
-      
+        </div>
     </Router>
   );
 }
