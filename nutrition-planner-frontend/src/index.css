@@ -80,7 +80,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: #4a3aff;
+  background: #f5fdf8;
   padding: 15px;
   color: white;
 }
@@ -110,10 +110,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: rgb(72, 188, 72);
+  background-color: #22c55e;
   cursor: pointer;
   transition: border-color 0.25s;
   color: rgb(255, 255, 255);
+  margin-right: 10px;
 }
 
 button:hover {
@@ -128,7 +129,7 @@ button:focus-visible {
 /* Links */
 a {
   font-weight: 500;
-  color: rgb(72, 188, 72);
+  color: white;
   text-decoration: inherit;
   padding: 8px 12px;
   transition: all 0.3s ease-in-out;

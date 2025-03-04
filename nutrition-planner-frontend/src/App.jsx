@@ -5,6 +5,9 @@ import Aihelper from './pages/aihelper';
 import Navbar from './pages/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
+import Dashboard from './pages/Dashboard';
+import Mealplanner from './pages/MealPlanner'
+import { MealPlanProvider } from './context/MealPlanContext';
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Signup from "./pages/Signup";
@@ -24,6 +27,7 @@ const NavbarLayout = () => {
 function App() {
   return (
     <AuthProvider>
+    <MealPlanProvider>
       <Routes>
         {/* Public routes without Navbar */}
         <Route path="/" element={<Navigate replace to="/login" />} />
@@ -40,11 +44,14 @@ function App() {
           <Route element={<NavbarLayout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/aihelper" element={<Aihelper />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/meal-planner" element={<Mealplanner />} />
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="*" element={<Error />} />
           </Route>
         </Route>
       </Routes>
+      </MealPlanProvider>
     </AuthProvider>
   );
 }
