@@ -40,7 +40,7 @@ const Login = () => {
       console.log("Making API request to:", "/api/auth/login");
       
       // Make sure to specify the complete URL if not using proxy
-      const response = await axios.post("http://localhost:5000/api/auth/login", { 
+      const response = await axios.post("http://localhost:7000/api/auth/login", { 
         email: formData.email.trim().toLowerCase(),
         password: formData.password
       });
