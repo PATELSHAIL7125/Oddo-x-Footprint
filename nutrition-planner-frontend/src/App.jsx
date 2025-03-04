@@ -1,59 +1,63 @@
-import React from 'react';
-import { Routes, Route, Navigate, Outlet } from "react-router-dom";
-import Detail from "./pages/Detail";
-import Aihelper from './pages/aihelper';
-import Navbar from './pages/Navbar';
-import Home from './pages/Home';
-import About from './pages/About';
-import Dashboard from './pages/Dashboard';
-import Mealplanner from './pages/MealPlanner'
-import { MealPlanProvider } from './context/MealPlanContext';
-import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import Error from "./pages/Error";
+import React from 'react'; 
+import { Routes, Route, Navigate, Outlet } from "react-router-dom"; 
+import Detail from "./pages/Detail"; 
+import Aihelper from './pages/aihelper'; 
+import Navbar from './pages/Navbar'; 
+import Home from './pages/Home'; 
+import About from './pages/About'; 
+import Dashboard from './pages/Dashboard'; 
+import Mealplanner from './pages/MealPlanner';
+import GetStarted from './pages/GetStarted'; // New page for get started
+import { MealPlanProvider } from './context/MealPlanContext'; 
+import { AuthProvider } from "./context/AuthContext"; 
+import ProtectedRoute from "./components/ProtectedRoute"; 
+import Signup from "./pages/Signup"; 
+import Login from "./pages/Login"; 
+import Error from "./pages/Error";  
 
-// Layout component with Navbar
-const NavbarLayout = () => {
-  return (
-    <>
-      <Navbar />
-      <Outlet />
-    </>
-  );
-};
+// Layout component with Navbar 
+const NavbarLayout = () => {   
+  return (     
+    <>       
+      <Navbar />       
+      <Outlet />     
+    </>   
+  ); 
+};  
 
-function App() {
-  return (
+function App() {   
+  return (     
     <AuthProvider>
-    <MealPlanProvider>
-      <Routes>
-        {/* Public routes without Navbar */}
-        <Route path="/" element={<Navigate replace to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        
-        {/* About page with Navbar */}
-        <Route element={<NavbarLayout />}>
-          <Route path="/about" element={<About />} />
-        </Route>
-        
-        {/* Protected routes with Navbar */}
-        <Route element={<ProtectedRoute />}>
+      <MealPlanProvider>       
+        <Routes>
+          {/* Initial redirect to login */}
+          <Route path="/" element={<Navigate replace to="/login" />} />
+          
+          {/* Public routes without Navbar */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/get-started" element={<GetStarted />} />
+                    
+          {/* Routes with Navbar */}
           <Route element={<NavbarLayout />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/aihelper" element={<Aihelper />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/meal-planner" element={<Mealplanner />} />
-            <Route path="/detail/:id" element={<Detail />} />
-            <Route path="*" element={<Error />} />
+            <Route path="/about" element={<About />} />
+            
+            {/* Protected routes */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/aihelper" element={<Aihelper />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/meal-planner" element={<Mealplanner />} />
+              <Route path="/detail/:id" element={<Detail />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
+          
+          {/* Catch-all error route */}
+          <Route path="*" element={<Error />} />
+        </Routes>
       </MealPlanProvider>
-    </AuthProvider>
-  );
-}
+    </AuthProvider>   
+  ); 
+}  
 
 export default App;

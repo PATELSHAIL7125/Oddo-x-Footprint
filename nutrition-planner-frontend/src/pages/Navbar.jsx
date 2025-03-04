@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom";
 import { Menu, X, UtensilsCrossed } from "lucide-react";
 
 const Navbar = () => {
@@ -22,22 +22,22 @@ const Navbar = () => {
             {/* Desktop Navigation - Adjusted spacing */}
             <div className="hidden md:flex items-center space-x-15">
               <Link
-                to="/"
-                className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
+                to="/home"
+                className="text-grey-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
               >
                 Home
               </Link>
               <Link
-                to="/meal-plans"
+                to="/meal-planner"
                 className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
               >
                 Meal Plans
               </Link>
               <Link
-                to="/recipes"
+                to="/aihelper"
                 className="text-gray-700 hover:text-green-600 px-2 py-2 font-medium transition-colors duration-200"
               >
-                Recipes
+                AI Helper
               </Link>
               <Link
                 to="/about"
@@ -76,22 +76,22 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
             <Link
-              to="/"
+              to="/home"
               className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
             >
               Home
             </Link>
             <Link
-              to="/meal-plans"
+              to="/meal-planner"
               className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
             >
               Meal Plans
             </Link>
             <Link
-              to="/recipes"
+              to="/aihelper"
               className="block px-3 py-2 text-gray-700 hover:text-green-600 font-medium"
             >
-              Recipes
+              AI Helper
             </Link>
             <Link
               to="/about"
@@ -101,7 +101,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/get-started"
-              className="bg-green-600 text-black px-8 py-3 rounded-md hover:bg-green-700 transition-colors duration-200 text-lg"
+              className="block bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition-colors duration-200 text-lg"
             >
               Get Started
             </Link>
